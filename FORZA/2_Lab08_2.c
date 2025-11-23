@@ -1,31 +1,29 @@
 #include <stdio.h>
 
 int main(void) {
-    int N;
-    if (scanf_s("%d", &N) != 1)
-        return 0;
+    int a[5];
 
-    int time[1001];
-    for (int i = 0; i < N; i++)
-        scanf_s("%d", &time[i]);
+    for (int i = 0; i < 5; i++)
+        scanf_s("%d", &a[i]);
 
-    for (int i = 0; i < N - 1; i++) {
-        for (int j = i + 1; j < N; j++) {
-            if (time[i] > time[j]) {
-                int temp = time[i];
-                time[i] = time[j];
-                time[j] = temp;
+    int sum = 0;
+    for (int i = 0; i < 5; i++)
+        sum += a[i];
+
+    for (int i = 0; i < 4; i++) {
+        for (int j = i + 1; j < 5; j++) {
+            if (a[i] > a[j]) {
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;   
+
             }
         }
     }
 
-    int sum = 0;
-    int total = 0;
-    for (int i = 0; i < N; i++) {
-        sum += time[i];
-        total += sum;
-    }
+    printf("%d\n", sum / 5);
+    printf("%d\n", a[2]);
 
-    printf("%d\n", total);
     return 0;
 }
+
